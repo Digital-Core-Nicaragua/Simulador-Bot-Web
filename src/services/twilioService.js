@@ -1,5 +1,5 @@
 const DEFAULT_CONFIG = {
-  webhookUrl: 'http://localhost:5157/api/chatbot/webhook/twilio',
+  webhookUrl: '/api/chatbot/webhook/twilio',
   accountSid: 'AC8f701e2b61ee2a217549d09be822c9c9',
   authToken: '1769cf11e791c5cdb4c7f3d48f79efae',
   whatsappFrom: 'whatsapp:+14155238886',

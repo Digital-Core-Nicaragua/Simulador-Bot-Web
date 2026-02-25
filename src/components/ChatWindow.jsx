@@ -18,13 +18,18 @@ export default function ChatWindow({ onBack }) {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [isLoading]);
+
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    await sendUserMessage(input);
+    const message = input;
     setInput('');
-    inputRef.current?.focus();
+    await sendUserMessage(message);
+    setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const handleClear = () => {
