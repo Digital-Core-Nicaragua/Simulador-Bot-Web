@@ -7,6 +7,7 @@ export default function ChatWindow({ onBack }) {
   const [input, setInput] = useState('');
   const { messages, isLoading, sendUserMessage, clearMessages } = useChat();
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
   const config = getConfig();
 
   const scrollToBottom = () => {
@@ -23,6 +24,7 @@ export default function ChatWindow({ onBack }) {
 
     await sendUserMessage(input);
     setInput('');
+    inputRef.current?.focus();
   };
 
   const handleClear = () => {
@@ -86,6 +88,7 @@ export default function ChatWindow({ onBack }) {
       <form onSubmit={handleSend} className="bg-white p-4 shadow-lg">
         <div className="flex gap-2">
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
