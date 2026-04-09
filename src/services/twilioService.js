@@ -1,5 +1,5 @@
 const DEFAULT_CONFIG = {
-  webhookUrl: '/api/chatbot/webhook/twilio',
+  webhookUrl: 'https://yaccproyectos-001-site4.ltempurl.com/api/whatsapp/webhook',
   accountSid: 'AC8f701e2b61ee2a217549d09be822c9c9',
   authToken: '1769cf11e791c5cdb4c7f3d48f79efae',
   whatsappFrom: 'whatsapp:+14155238886',
@@ -46,8 +46,12 @@ const parseTwiML = (twiml) => {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(twiml, 'text/xml');
     const messageElement = xmlDoc.getElementsByTagName('Message')[0];
-    return messageElement?.textContent || 'Sin respuesta';
+    const mediaElement = xmlDoc.getElementsByTagName('Media')[0];
+    return {
+      text: messageElement?.childNodes[0]?.textContent?.trim() || 'Sin respuesta',
+      imageUrl: mediaElement?.textContent?.trim() || null
+    };
   } catch (error) {
-    return twiml;
+    return { text: twiml, imageUrl: null };
   }
 };

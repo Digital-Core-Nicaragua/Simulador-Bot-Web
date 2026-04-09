@@ -51,7 +51,7 @@ export default function ChatWindow({ onBack }) {
               ← Volver
             </button>
             <div>
-              <h2 className="font-bold text-lg">AguaRoca Bot</h2>
+              <h2 className="font-bold text-lg">Hamac del Sol</h2>
               <p className="text-sm opacity-90">{config.phoneNumber}</p>
             </div>
           </div>

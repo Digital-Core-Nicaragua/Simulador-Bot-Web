@@ -23,7 +23,8 @@ export const useChat = () => {
       
       const botMessage = {
         id: Date.now() + 1,
-        text: botResponse,
+        text: botResponse.text,
+        imageUrl: botResponse.imageUrl,
         sender: 'bot',
         timestamp: new Date()
       };
